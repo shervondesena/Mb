@@ -1,0 +1,65 @@
+<% if (!dataPage.session.user) { %>
+    <div _ngcontent-serverapp-c151="" class="btns" style="text-align: center;">
+        <button _ngcontent-serverapp-c151="" type="button"
+            onclick="window.location='/auth'" style="padding: 5px 17px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            text-transform: uppercase;">
+            <span style="color: #fff;
+            padding: 10px;
+            background: #0068b0;
+            width: 50%;">Đăng nhập</span>
+            <span style="color: #fff;
+            padding: 10px;
+            background: #f7941d;
+            width: 50%;">Đăng ký</span>
+        </button>
+    </div>
+    <% } %>
+<% if (dataPage.session.user) { %>
+    <app-member-info-new _ngcontent-serverapp-c151="" _nghost-serverapp-c150="">
+        <section _ngcontent-serverapp-c150="" style="padding-inline: 1rem;"
+            class="bg-customized-bg-quaternary text-customized-text-primary flex h-[70px] items-center justify-center">
+            <div _ngcontent-serverapp-c150=""
+                class="left flex w-[28%] flex-col items-center justify-center text-center text-xs">
+                <div _ngcontent-serverapp-c150="" class="flex h-full items-center">
+                    <i _ngcontent-serverapp-c150="" class="fas fa-user-circle member text-2xl"></i>
+                    <p _ngcontent-serverapp-c150="" class="flex flex-col text-left">
+                        <span _ngcontent-serverapp-c150="" class="text-customized-text-tertiary" style="font-size: 15px;color: #000;text-transform: uppercase;">
+                            <%=dataPage.session.user.username%>
+                        </span>
+                        <span _ngcontent-serverapp-c151="" class="text-customized-text-secondary mx-0.5" style="font-size: 15px;color: #dddd06;text-transform: uppercase;">
+                            $ <%=dataPage.helpers.numberWithCommas(dataPage.session.user.coin)%>
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <ul _ngcontent-serverapp-c150=""
+                class="text-customized-text-primary menu relative box-border flex h-full w-[72%] items-center justify-evenly uppercase">
+                <li _ngcontent-serverapp-c150="" class="w-[30%] text-center text-xs" onclick="window.location='/account/deposit'">
+                    <i _ngcontent-serverapp-c150="" class="mb-1 block">
+                        <img _ngcontent-serverapp-c150="" alt="" style="height: 30px;margin-bottom: 7px;"
+                            src="https://uxwing.com/wp-content/themes/uxwing/download/banking-finance/deposit-icon.png">
+                    </i>
+                    <span _ngcontent-serverapp-c150="" style="color: #0068b0;font-weight: 600;font-size: 15px;">NẠP TIỀN</span>
+                </li>
+                <li _ngcontent-serverapp-c150="" class="w-[30%] text-center text-xs" onclick="window.location='/account/withdraw'">
+                    <i _ngcontent-serverapp-c150="" class="mb-1 block">
+                        <img _ngcontent-serverapp-c150="" alt="" style="height: 30px;margin-bottom: 7px;"
+                            src="https://uxwing.com/wp-content/themes/uxwing/download/banking-finance/hand-money-income-dollar-icon.png">
+                    </i>
+                    <span _ngcontent-serverapp-c150="" style="color: #0068b0;font-weight: 600;font-size: 15px;">Rút tiền</span>
+                </li>
+                <li _ngcontent-serverapp-c150="" class="w-[30%] text-center text-xs" onclick="window.location='/account/wallet-transfer'">
+                    <i _ngcontent-serverapp-c150="" class="mb-1 block">
+                        <img _ngcontent-serverapp-c150="" alt="" style="height: 30px;margin-bottom: 7px;"
+                            src="https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/credit-card-icon.png">
+                    </i>
+                    <span _ngcontent-serverapp-c150="" style="color: #0068b0;font-weight: 600;font-size: 15px;">Chuyển Quỹ</span>
+                </li>
+            </ul>
+        </section>
+    </app-member-info-new>
+    <% } %>
