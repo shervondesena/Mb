@@ -1,16 +1,15 @@
 $(document).ready(function () {
     // SLIDE SHOW
     var swiperBanner = new Swiper(".mySwiperBanner", {
-        spaceBetween: 30,
-        effect: "cude",
+        spaceBetween: 0,
+        effect: "slide",
         speed: 1000,
-        slidersPerView: 1,
+        slidesPerView: 1,
         loop: true,
         grabCursor: false,
         loopFillGroupWithBlank: false,
         centeredSlides: true,
         centeredSlidesBounds: true,
-        centeredSlides: true,
         initialSlide: 1,
         coverflowEffect: {
             rotate: 50,

@@ -12,9 +12,10 @@
     window.__lc.license = 18468018;
     window.__lc.integration_name = "manual_onboarding";
     window.__lc.product_name = "livechat";
-    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+    ; (function (n, t, c) { function i(n) { return e._h ? e._h.apply(null, n) : e._q.push(n) } var e = { _q: [], _h: null, _v: "2.0", on: function () { i(["on", c.call(arguments)]) }, once: function () { i(["once", c.call(arguments)]) }, off: function () { i(["off", c.call(arguments)]) }, get: function () { if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load."); return i(["get", c.call(arguments)]) }, call: function () { i(["call", c.call(arguments)]) }, init: function () { var n = t.createElement("script"); n.async = !0, n.type = "text/javascript", n.src = "https://cdn.livechatinc.com/tracking.js", t.head.appendChild(n) } }; !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e }(window, document, [].slice))
 </script>
-<noscript><a href="https://www.livechat.com/chat-with/18468018/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+<noscript><a href="https://www.livechat.com/chat-with/18468018/" rel="nofollow">Chat with us</a>, powered by <a
+        href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
 <!-- End of LiveChat code -->
 
 
@@ -42,10 +43,8 @@
             <meta name="mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-status-bar-style" content="black">
-            <link rel="shortcut icon"
-                href="https://i.ibb.co/8PYrxkw/logo1-1.png">
-            <link rel="apple-touch-icon"
-                href="https://i.ibb.co/8PYrxkw/logo1-1.png">
+            <link rel="shortcut icon" href="/images/logo.png">
+            <link rel="apple-touch-icon" href="/images/logo.png">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
             <script src="/core/js/custom/helpers.js"></script>
@@ -665,7 +664,6 @@
                     left: 0;
                     right: 0;
                     height: 52px;
-                    padding: 0 8px;
                     color: #000;
                     --tw-bg-opacity: 1;
                     background-color: #fff;
@@ -680,8 +678,8 @@
                 }
 
                 .logo[_ngcontent-serverApp-c151] img[_ngcontent-serverApp-c151] {
-                    max-width: 200px;
-                    max-height: 100px
+                    max-width: 121px;
+                    max-height: 100%;
                 }
 
                 section[_ngcontent-serverApp-c151] {
@@ -802,10 +800,23 @@
                     right: 0;
                     bottom: 0;
                     height: 62px;
-                    --tw-text-opacity: 1;
-                    color: rgb(137 145 160 / var(--tw-text-opacity));
-                    --tw-bg-opacity: 1;
-                    background-color: rgb(39 40 42 / var(--tw-bg-opacity))
+                    color: #000;
+                }
+
+                footer[_ngcontent-serverApp-c78] a {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                footer[_ngcontent-serverApp-c78] i {
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    font-size: 24px;
+                    line-height: 30px;
+                    text-align: center;
                 }
 
                 .chat[_ngcontent-serverApp-c78] i[_ngcontent-serverApp-c78],
@@ -869,7 +880,6 @@
                 .swiper[_ngcontent-serverApp-c161] {
                     width: 100%;
                     height: 100%;
-                    margin: .5rem auto
                 }
             </style>
             <style>
@@ -958,30 +968,38 @@
                 }
 
                 .category-item[_ngcontent-serverApp-c162] {
-                    display: flex;
+                    display: inline-flex;
                     flex-direction: column;
-                    justify-content: center;
                     align-items: center;
-                    min-width: 60px;
-                    min-height: 54px;
-                    margin: 0 0 5px;
-                    padding: 8px 0 5px;
-                    text-align: center;
-                    font-size: 13px;
-                    word-break: break-all;
-                    line-height: 1;
-                    border-radius: 6px;
-                    --tw-text-opacity: 1;
-                    color: #fff;
-                    --tw-bg-opacity: 1;
-                    background-color: rgb(39 40 42 / var(--tw-bg-opacity))
+                    justify-content: center;
+                    width: 100%;
+                    height: 60px;
+                    background: #eee;
+                    border-radius: 6.8px;
+                    border: solid .4px transparent;
                 }
 
                 .category-item.active[_ngcontent-serverApp-c162] {
-                    --tw-text-opacity: 1;
-                    color: #fff;
-                    --tw-bg-opacity: 1;
-                    background-color: #0068b0
+                    color: #090909;
+                    background: #fff;
+                    border-radius: 6.8px;
+                    border: solid .4px #ff7575;
+                    box-shadow: inset 0 1.7px 8.4px #fe9ea0;
+                }
+
+                .category-item i {
+                    height: 24px;
+                    width: 24px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    margin: 0 auto 5px;
+                    background-position: center;
+                }
+
+                .category-item span {
+                    font-size: 10px;
+                    font-weight: 700;
+                    color: #000;
                 }
 
                 .btn[_ngcontent-serverApp-c162] {

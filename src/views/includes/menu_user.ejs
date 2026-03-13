@@ -1,65 +1,315 @@
-<% if (!dataPage.session.user) { %>
-    <div _ngcontent-serverapp-c151="" class="btns" style="text-align: center;">
-        <button _ngcontent-serverapp-c151="" type="button"
-            onclick="window.location='/auth'" style="padding: 5px 17px;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            text-transform: uppercase;">
-            <span style="color: #fff;
-            padding: 10px;
-            background: #0068b0;
-            width: 50%;">Đăng nhập</span>
-            <span style="color: #fff;
-            padding: 10px;
-            background: #f7941d;
-            width: 50%;">Đăng ký</span>
-        </button>
-    </div>
-    <% } %>
-<% if (dataPage.session.user) { %>
-    <app-member-info-new _ngcontent-serverapp-c151="" _nghost-serverapp-c150="">
-        <section _ngcontent-serverapp-c150="" style="padding-inline: 1rem;"
-            class="bg-customized-bg-quaternary text-customized-text-primary flex h-[70px] items-center justify-center">
-            <div _ngcontent-serverapp-c150=""
-                class="left flex w-[28%] flex-col items-center justify-center text-center text-xs">
-                <div _ngcontent-serverapp-c150="" class="flex h-full items-center">
-                    <i _ngcontent-serverapp-c150="" class="fas fa-user-circle member text-2xl"></i>
-                    <p _ngcontent-serverapp-c150="" class="flex flex-col text-left">
-                        <span _ngcontent-serverapp-c150="" class="text-customized-text-tertiary" style="font-size: 15px;color: #000;text-transform: uppercase;">
-                            <%=dataPage.session.user.username%>
-                        </span>
-                        <span _ngcontent-serverapp-c151="" class="text-customized-text-secondary mx-0.5" style="font-size: 15px;color: #dddd06;text-transform: uppercase;">
-                            $ <%=dataPage.helpers.numberWithCommas(dataPage.session.user.coin)%>
-                        </span>
-                    </p>
-                </div>
-            </div>
+<style>
+    .news-wrap[_ngcontent-serverApp-c148] {
+        position: relative;
+        width: 100%;
+        height: 24px;
+        padding: 0 40px;
+        color: rgb(0 0 0 / 1);
+        font-size: 12px;
+        line-height: 24px;
+        background-color: rgb(255 255 255 / 1);
+    }
 
-            <ul _ngcontent-serverapp-c150=""
-                class="text-customized-text-primary menu relative box-border flex h-full w-[72%] items-center justify-evenly uppercase">
-                <li _ngcontent-serverapp-c150="" class="w-[30%] text-center text-xs" onclick="window.location='/account/deposit'">
-                    <i _ngcontent-serverapp-c150="" class="mb-1 block">
-                        <img _ngcontent-serverapp-c150="" alt="" style="height: 30px;margin-bottom: 7px;"
-                            src="https://uxwing.com/wp-content/themes/uxwing/download/banking-finance/deposit-icon.png">
-                    </i>
-                    <span _ngcontent-serverapp-c150="" style="color: #0068b0;font-weight: 600;font-size: 15px;">NẠP TIỀN</span>
-                </li>
-                <li _ngcontent-serverapp-c150="" class="w-[30%] text-center text-xs" onclick="window.location='/account/withdraw'">
-                    <i _ngcontent-serverapp-c150="" class="mb-1 block">
-                        <img _ngcontent-serverapp-c150="" alt="" style="height: 30px;margin-bottom: 7px;"
-                            src="https://uxwing.com/wp-content/themes/uxwing/download/banking-finance/hand-money-income-dollar-icon.png">
-                    </i>
-                    <span _ngcontent-serverapp-c150="" style="color: #0068b0;font-weight: 600;font-size: 15px;">Rút tiền</span>
-                </li>
-                <li _ngcontent-serverapp-c150="" class="w-[30%] text-center text-xs" onclick="window.location='/account/wallet-transfer'">
-                    <i _ngcontent-serverapp-c150="" class="mb-1 block">
-                        <img _ngcontent-serverapp-c150="" alt="" style="height: 30px;margin-bottom: 7px;"
-                            src="https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/credit-card-icon.png">
-                    </i>
-                    <span _ngcontent-serverapp-c150="" style="color: #0068b0;font-weight: 600;font-size: 15px;">Chuyển Quỹ</span>
-                </li>
+    .title[_ngcontent-serverApp-c148] {
+        position: absolute;
+        top: 0;
+        left: 12px;
+        text-align: center;
+    }
+
+    .title[_ngcontent-serverApp-c148]>i[_ngcontent-serverApp-c148] {
+        display: inline-block;
+        vertical-align: middle;
+        width: 18px;
+        height: 26px;
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        background-color: rgb(0 0 0 / 1);
+        mask-image: url("/images/icon/news.b329be7500f66377.svg");
+    }
+
+    .ngx-marquee[_ngcontent-serverApp-c147] {
+        overflow: hidden;
+        text-align: left;
+    }
+
+    .news-wrap .ngx-marquee {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .news-wrap .ngx-marquee>span[data-play-state="running"] {
+        display: inline-block;
+        white-space: nowrap;
+        will-change: transform;
+        animation: hotNewsRightToLeft 30s linear infinite !important;
+    }
+
+    .news-wrap .ngx-marquee .tickers>span {
+        display: inline-block;
+        width: max-content !important;
+        padding-right: 32px;
+    }
+
+    @keyframes hotNewsRightToLeft {
+        from {
+            transform: translateX(var(--hot-news-start, 100%));
+        }
+
+        to {
+            transform: translateX(calc(-1 * var(--hot-news-distance, 100%)));
+        }
+    }
+
+    .email[_ngcontent-serverApp-c148] i[_ngcontent-serverApp-c148] {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 19px;
+        mask-image: url("/images/icon/email.987a824a612b15a3.svg");
+        background-color: rgb(255 0 0 /1);
+    }
+
+    /* Member infor */
+    [_nghost-serverApp-c189] {
+        display: block;
+        position: relative;
+        z-index: 1;
+        background: #fff
+    }
+
+    .section-account[_ngcontent-serverApp-c189] {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 78px;
+    }
+
+    .btns[_ngcontent-serverApp-c189] {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btns[_ngcontent-serverApp-c189] a[_ngcontent-serverApp-c189] {
+        position: relative;
+        min-width: 118px;
+        height: 35px;
+        background: url("/images/main/member_reg.cec72a61643aef0c.png") no-repeat center / contain;
+    }
+
+    .btns[_ngcontent-serverApp-c189] a[_ngcontent-serverApp-c189]+a[_ngcontent-serverApp-c189] {
+        margin-top: 4px;
+        background: url("/images/main/member_login.da01be09096aab48.png") no-repeat center / contain;
+    }
+
+    .info[_ngcontent-serverApp-c189] {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 65%;
+    }
+
+    .info[_ngcontent-serverApp-c189] li[_ngcontent-serverApp-c189] {
+        width: 54px;
+        height: 57px;
+        border-radius: 12px;
+        border: solid 1.5px #ffd3d3;
+    }
+
+    .section-account .info li a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .section-account .info li i {
+        display: block;
+        width: 40px;
+        height: 30px;
+        margin: 2px auto 0;
+    }
+
+    .section-account .info li p {
+        margin: 2px 0 0;
+        font-size: 12px;
+        line-height: 1;
+        color: #222;
+        font-weight: 600;
+    }
+
+    .info[_ngcontent-serverApp-c189] li[_ngcontent-serverApp-c189] i[_ngcontent-serverApp-c189] {
+        display: block;
+        width: 44px;
+        height: 34px;
+        margin: 3px auto 0;
+    }
+
+    .info[_ngcontent-serverApp-c189] li[_ngcontent-serverApp-c189] p[_ngcontent-serverApp-c189] {
+        margin-top: 4px;
+        margin-bottom: 0;
+        font-size: 9px;
+        font-weight: 700;
+        text-align: center;
+        line-height: 10px;
+        color: #000;
+    }
+
+    .info[_ngcontent-serverApp-c189] li[_ngcontent-serverApp-c189] i.withdraw[_ngcontent-serverApp-c189] {
+        background: url("/images/main/member_withdraw.db358d6c9f636182.png") no-repeat center / contain;
+    }
+
+    .info[_ngcontent-serverApp-c189] li[_ngcontent-serverApp-c189] i.app[_ngcontent-serverApp-c189] {
+        background: url("/images/main/member_app.0e2d936b5507d444.png") no-repeat center / contain;
+    }
+
+    .info[_ngcontent-serverApp-c189] li[_ngcontent-serverApp-c189] i.tg[_ngcontent-serverApp-c189] {
+        background: url("/images/main/member_tg.efcea705bbbd6fb2.png") no-repeat center / contain;
+    }
+
+    .info[_ngcontent-serverApp-c189] li[_ngcontent-serverApp-c189] i.trademark[_ngcontent-serverApp-c189] {
+        background: url("/images/main/member_trademark.7acc306713b04adf.png") no-repeat center / contain;
+    }
+
+    .info[_ngcontent-serverApp-c189] li[_ngcontent-serverApp-c189] i.gtbb[_ngcontent-serverApp-c189] {
+        position: relative;
+        background: url("/images/main/member_gtbb.19cb140f31329c74.png") no-repeat center / contain;
+    }
+
+    .info[_ngcontent-serverApp-c189] li[_ngcontent-serverApp-c189] i.deposit[_ngcontent-serverApp-c189] {
+        background: url("/images/main/member_deposit.be658226a2704dfd.png") no-repeat center / contain;
+    }
+</style>
+<app-hot-news _ngcontent-serverapp-c190="" _nghost-serverapp-c148="">
+    <div _ngcontent-serverapp-c148="" class="news-wrap ng-star-inserted">
+        <div _ngcontent-serverapp-c148="" class="title">
+            <i _ngcontent-serverapp-c148="" aria-hidden="true" class="news"></i>
+        </div>
+        <ngx-marquee _ngcontent-serverapp-c148="" class="overflow-hidden" _nghost-serverapp-c147=""
+            style="background-color: transparent">
+            <div _ngcontent-serverapp-c147="" class="ngx-marquee">
+                <span _ngcontent-serverapp-c147="" data-play-state="running"
+                    style="animation-duration: 288.9s; animation-timing-function: linear; animation-delay: 0s; animation-iteration-count: infinite; animation-direction: normal; animation-fill-mode: none; animation-name: movement-smooth; animation-timeline: auto; animation-range: normal;">
+                    <span _ngcontent-serverapp-c147="" class="tickers">
+                        <span _ngcontent-serverapp-c148=""
+                            class="mx-1.5 inline-block whitespace-nowrap align-top leading-6 ng-star-inserted"
+                            style="display: inline-block;width: 20px;text-align: center;color: #000;background-color: transparent;">📣📣📣
+                            THÔNG BÁO: Từ ngày 01/01/2026 MB66 có chương trình khuyến mãi 100% cho khách hàng mới đăng
+                            ký
+                            tại trang. ⛑️Chi tiết vui lòng xem thêm tại CTKM hoặc liên hệ CSKH để được hỗ trợ thêm.
+                            ⛑️CTKM 50%
+                            và 100% tạm thời có thêm CHƯƠNG TRÌNH MỪNG XUÂN BÍNH NGỌ với mức ưu đãi hấp dẫn hơn. Vui
+                            lòng xem
+                            thông tin chi tiết tại KHUYẾN MÃI.
+                        </span>
+                    </span>
+                </span>
+            </div>
+        </ngx-marquee>
+        <a _ngcontent-serverapp-c148="" class="email"><i _ngcontent-serverapp-c148=""></i>
+        </a>
+    </div>
+</app-hot-news>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var marquee = document.querySelector(".news-wrap .ngx-marquee");
+        if (!marquee) return;
+
+        var runner = marquee.querySelector("span[data-play-state='running']");
+        var text = marquee.querySelector(".tickers > span");
+        if (!runner || !text) return;
+
+        text.style.width = "max-content";
+
+        var containerWidth = marquee.clientWidth;
+        var textWidth = text.scrollWidth;
+
+        if (!containerWidth || !textWidth) return;
+
+        var speedPxPerSecond = 14;
+        var duration = Math.max((containerWidth + textWidth) / speedPxPerSecond, 40);
+
+        runner.style.setProperty("--hot-news-start", containerWidth + "px");
+        runner.style.setProperty("--hot-news-distance", textWidth + "px");
+        runner.style.animation = "hotNewsRightToLeft " + duration + "s linear infinite";
+    });
+</script>
+<% if (!dataPage.session.user) { %>
+    <app-member-info _ngcontent-serverapp-c190="" _nghost-serverapp-c189="">
+        <div _ngcontent-serverapp-c189="" class="section-account px-[12px]">
+            <div _ngcontent-serverapp-c189="" class="btns ng-star-inserted"><a _ngcontent-serverapp-c189=""
+                    routerlink="/auth" href="/auth"></a><a _ngcontent-serverapp-c189="" routerlink="/auth"
+                    href="/auth"></a></div>
+            <ul _ngcontent-serverapp-c189="" class="info">
+                <li _ngcontent-serverapp-c189="" class="ng-star-inserted"><a _ngcontent-serverapp-c189=""
+                         class="text-center" href="#"
+                        onclick="alert('Vui lòng liên hệ CSKH để tải App'); return false;"><i
+                            _ngcontent-serverapp-c189="" class="app"></i>
+                        <p _ngcontent-serverapp-c189="">Tải App</p>
+                    </a></li>
+                <li _ngcontent-serverapp-c189="" class="ng-star-inserted"><a _ngcontent-serverapp-c189="" target="_self"
+                        class="text-center" href="#" onclick="alert('Vui lòng liên hệ CSKH'); return false;"><i
+                            _ngcontent-serverapp-c189="" class="tg"></i>
+                        <p _ngcontent-serverapp-c189="">Tin Tức</p>
+                    </a></li>
+                <li _ngcontent-serverapp-c189="" class="ng-star-inserted"><a _ngcontent-serverapp-c189=""
+                         href="#" onclick="alert('Vui lòng liên hệ CSKH để đăng ký'); return false;"><i
+                            _ngcontent-serverapp-c189="" class="trademark"></i>
+                        <p _ngcontent-serverapp-c189="">Đại Lý</p>
+                    </a></li>
+                <li _ngcontent-serverapp-c189="" class="ng-star-inserted"><a _ngcontent-serverapp-c189=""
+                         href="#" onclick="alert('Vui lòng liên hệ CSKH'); return false;"><i
+                            _ngcontent-serverapp-c189="" class="gtbb"></i>
+                        <p _ngcontent-serverapp-c189="">GTBB</p>
+                    </a></li>
             </ul>
-        </section>
-    </app-member-info-new>
+        </div>
+    </app-member-info>
     <% } %>
+        <% if (dataPage.session.user) { %>
+            <app-member-info-new _ngcontent-serverapp-c151="" _nghost-serverapp-c150="">
+                <section _ngcontent-serverapp-c150=""
+                    class="bg-customized-bg-quaternary text-customized-text-primary flex h-[70px] items-center" style="justify-content: space-around;">
+                    <div _ngcontent-serverapp-c150=""
+                        class="left flex w-[30%] flex-col items-center justify-center text-start text-xs">
+                        <div _ngcontent-serverapp-c150="" class="flex h-full items-center">
+                            <p style="margin: 0">
+                                <span _ngcontent-serverapp-c150="" class="text-customized-text-tertiary"
+                                    style="font-size: 15px;color: #000;">
+                                    <%=dataPage.session.user.username%>
+                                </span> </br>
+                                <span _ngcontent-serverapp-c151="" class="text-customized-text-secondary mx-0.5"
+                                    style="font-size: 15px;color: #ff0000;">
+                                    <%=dataPage.helpers.numberWithCommas(dataPage.session.user.coin)%>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <ul _ngcontent-serverapp-c189="" class="info">
+                        <li _ngcontent-serverapp-c189="" onclick="window.location='/account/deposit'"><i _ngcontent-serverapp-c189="" class="deposit"></i>
+                            <p _ngcontent-serverapp-c189="">Nạp Tiền</p>
+                        </li>
+                        <li _ngcontent-serverapp-c189="" onclick="window.location='/account/withdraw'"><i _ngcontent-serverapp-c189="" class="withdraw" ></i>
+                            <p _ngcontent-serverapp-c189="">Rút Tiền</p>
+                        </li>
+                        <li _ngcontent-serverapp-c189=""><a _ngcontent-serverapp-c189="" 
+                                onclick="alert('Vui lòng liên hệ CSKH để đăng ký'); return false;"><i _ngcontent-serverapp-c189=""
+                                    class="trademark"></i>
+                                <p _ngcontent-serverapp-c189="">Đại Lý</p>
+                            </a></li>
+                        <li _ngcontent-serverapp-c189=""><a _ngcontent-serverapp-c189="" 
+                                onclick="alert('Vui lòng liên hệ CSKH GTBB'); return false;"><i _ngcontent-serverapp-c189="" class="gtbb"></i>
+                                <p _ngcontent-serverapp-c189="">GTBB</p>
+                            </a></li>
+                    </ul>
+                </section>
+            </app-member-info-new>
+            <% } %>

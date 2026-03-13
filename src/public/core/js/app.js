@@ -14,9 +14,14 @@ const LIST_PRODUCT_TYPE = [
 
 $(document).ready(() => {
     $(".category-list").on('click', 'li', function () {
+        var productType = $(this).attr("data-product-type");
+        if (productType === "slot") {
+            alert("Sảnh game đang bảo trì");
+            return;
+        }
         $(".category-list li.active").removeClass("active");
         $(this).addClass("active");
-        changeTabGame($(this).attr("data-product-type"));
+        changeTabGame(productType);
     });
     getFishGameList();
 });
