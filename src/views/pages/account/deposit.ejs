@@ -106,7 +106,7 @@
             align-items: center;
             justify-content: space-between;
             background: #fff;
-            color: #0068b0;
+            color: #d4453d;
         }
 
         .header[_ngcontent-serverApp-c148] .header-wrap[_ngcontent-serverApp-c148]:before {
@@ -126,7 +126,7 @@
             --tw-text-opacity: 1;
             color: rgb(255 255 255 / var(--tw-text-opacity));
             --tw-bg-opacity: 1;
-            background-color: #0068b0;
+            background-color: #d4453d;
         }
 
         .bottom-sheet-content .wrapper {
@@ -215,8 +215,8 @@
             --tw-bg-opacity: 1;
             --tw-border-opacity: 1;
             color: #fff;
-            background-color: #0068b0;
-            border-color: #0068b0
+            background-color: #d4453d;
+            border-color: #d4453d
         }
 
         .content-wrapper[_ngcontent-serverApp-c149] .bottom-sheet-content .wrapper .btn-secondary {
@@ -890,7 +890,7 @@
         .containerProgress .item {
             display: none;
             background: #fff;
-            color: #0068b0;
+            color: #d4453d;
             border: 2px solid;
             border-radius: 10px;
             align-items: center;
@@ -908,7 +908,7 @@
             border: 2px solid;
             border-radius: 50%;
             padding: 11px 16px;
-            background: #0068b0;
+            background: #d4453d;
             color: #fff;
             margin-right: 1rem;
         }
@@ -937,7 +937,7 @@
         }
 
         .deposit-select-amount li.selected {
-            background-color: #0068b0 !important;
+            background-color: #d4453d !important;
         }
 
         .secondStep {
@@ -1013,7 +1013,7 @@
             outline: none;
             border: none;
             color: white;
-            background: #0068b0;
+            background: #d4453d;
             text-transform: uppercase;
             font-size: 16px;
             font-weight: 600;
@@ -1077,25 +1077,62 @@
             padding: 5px 0;
             border: none;
             border-radius: 0 0 10px 10px;
-            background: #0068b0;
+            background: #d4453d;
             color: white;
             font-weight: 600;
         }
     </style>
 
+    <style>
+        #listBank {
+            background: #fff;
+            color: #000;
+            padding: 10px 0;
+        }
 
+        #listBank h4 {
+            font-weight: 500;
+        }
+
+        .toto-top-up__payment-methods {
+            padding: 0 24px;
+        }
+
+        .toto-top-up__payment-method-item {
+            border: 1px solid #aba8a8;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .toto-top-up__payment-method-item--selected::after,
+        .toto-top-up__payment-method-item--selected:hover::after {
+            display: inline-block;
+            background-color: #d4453d;
+        }
+
+        .toto-top-up__payment-method-item--selected::before,
+        .toto-top-up__payment-method-item--selected:hover::before {
+            display: inline-block;
+            border-color: #d4453d;
+        }
+
+        .toto-top-up__payment-method-item--selected,
+        .toto-top-up__payment-method-item--selected:hover {
+            border: 4px solid #d4453d;
+        }
+    </style>
 
     <body class="mat-typography vi-VN">
         <app-root _nghost-sc178="" ng-version="14.2.12" ng-server-context="other" _nghost-serverapp-c157="">
             <app-sample-layout _nghost-serverapp-c91="">
                 <app-member-layout _nghost-serverapp-c148="" style="background-color: #fff;">
                     <header _ngcontent-serverapp-c148="" class="header">
-                        <div _ngcontent-serverapp-c148="" class="header-wrap" style="background: #fff;color: #0068b0;">
+                        <div _ngcontent-serverapp-c148="" class="header-wrap" style="background: #fff;color: #d4453d;">
                             <div _ngcontent-serverapp-c148="" class="flex" onclick="window.location='/account'">
                                 <div _ngcontent-serverapp-c148="" class="mr-4">
                                     <i _ngcontent-serverapp-c148="" class="fas fa-arrow-left text-2xl"></i>
                                 </div>
-                                <h2 _ngcontent-serverapp-c148="" style="color: #0068b0;"
+                                <h2 _ngcontent-serverapp-c148="" style="color: #d4453d;"
                                     class="text-customized-text-secondary m-0 uppercase">
                                     NẠP TIỀN
                                 </h2>
@@ -1106,7 +1143,7 @@
                         </div>
 
                         <section _ngcontent-serverapp-c148="" class="bottom fl"
-                            style="background: #0068b0;color: #fff;">
+                            style="background: #d4453d;color: #fff;">
                             <div _ngcontent-serverapp-c148="" class="inline-block text-sm">
                                 <p _ngcontent-serverapp-c148="" class="m-0 pt-3">
 
@@ -1116,7 +1153,7 @@
                                     </span>
                                 </p>
                                 <div _ngcontent-serverapp-c148="" class="mt-1">
-                                    <span _ngcontent-serverapp-c148="" style="color: yellow;" class="mx-0.5 text-2xl">
+                                    <span _ngcontent-serverapp-c148="" style="color: #fff;" class="mx-0.5 text-2xl">
                                         <%=dataPage.helpers.numberWithCommas(dataPage.session.user.coin)%>
                                     </span>
                                     <span _ngcontent-serverapp-c148="" style="color: #fff;"
@@ -1124,7 +1161,7 @@
                                 </div>
                             </div>
                             <div _ngcontent-serverapp-c148="" class="float-right pt-6"><a _ngcontent-serverapp-c148=""
-                                    href="/account/security"><i _ngcontent-serverapp-c148=""
+                                    href="/account"><i _ngcontent-serverapp-c148=""
                                         class="fas fa-user-circle text-customized-text-primary text-4xl"
                                         style="color: #fff;"></i></a></div>
                         </section>
@@ -1147,23 +1184,40 @@
                                                         <section class="containerProgress">
                                                             <div class="item active">
                                                                 <span>1</span>
-                                                                <p>Chọn phương thức & Nhập số tiền</p>
+                                                                <p>Chọn Ngân hàng & Nhập số tiền</p>
                                                             </div>
                                                             <div class="item">
                                                                 <span>2</span>
-                                                                <p>Chuyển tiền và ấn Xác nhận nạp tiền</p>
+                                                                <p>Chuyển tiền và ấn Hoàn thành nạp tiền</p>
                                                             </div>
                                                         </section>
-                                                        <section class="functionPayment">
-                                                            <h2>Phương thức nạp tiền ưu tiên</h2>
-                                                            <img src="/images/bankList/napsieunhanh.png" alt="VIB0">
-                                                            <img src="/images/bankList/napusdt.png" alt="USDT">
-                                                            <h2>Phương thức nạp tiền dự phòng</h2>
-                                                            <img src="/images/bankList/napnhanh.png" alt="VIB0">
-                                                            <img src="/images/bankList/napthuong.png" alt="VIB1">
-                                                            <img src="/images/bankList/napduphong.png" alt="VIB1">
+                                                        <section id="listBank">
+                                                            <h4 class="toto-top-up__stage-subtitle">Chọn ngân hàng nạp
+                                                            </h4>
+                                                            <% if (dataPage.listBank && dataPage.listBank.length> 0) {
+                                                                %>
+                                                                <ul class="toto-top-up__payment-methods">
+                                                                    <% dataPage.listBank.forEach(function(bank) { %>
+                                                                        <li class="toto-top-up__payment-method-item">
+                                                                            <button type="button">
+                                                                                <span
+                                                                                    class="lazy-load-image-background blur lazy-load-image-loaded"
+                                                                                    style="color: transparent; display: inline-block;">
+                                                                                    <img class="toto-top-up__payment-method-item-image"
+                                                                                        src="<%= bank.bankLogo %>"
+                                                                                        alt="<%= bank.id %>">
+                                                                                </span>
+                                                                            </button>
+                                                                        </li>
+                                                                        <% }); %>
+                                                                </ul>
+                                                                <% } else { %>
+                                                                    <p
+                                                                        style="text-align: center; color: red; font-weight: 600; padding: 20px;">
+                                                                        Ngân hàng đang bảo trì</p>
+                                                                    <% } %>
                                                         </section>
-                                                        <section _ngcontent-serverapp-c124="" style="display: none;"
+                                                        <section _ngcontent-serverapp-c124="" style="display: block;"
                                                             class="bottom-sheet-content selectAmount">
                                                             <div _ngcontent-serverapp-c124=""
                                                                 class="wrapper overflow-y-auto bg-white p-3 text-black"
@@ -1196,16 +1250,6 @@
                                                                             style="margin: 0 auto;">
 
                                                                             <li class="text-center"
-                                                                                data-amount="200000"> <span
-                                                                                    class="ng-binding">200.000</span>
-                                                                            </li>
-
-                                                                            <li class="text-center"
-                                                                                data-amount="300000"> <span
-                                                                                    class="ng-binding">300.000</span>
-                                                                            </li>
-
-                                                                            <li class="text-center"
                                                                                 data-amount="500000"> <span
                                                                                     class="ng-binding">500.000</span>
                                                                             </li>
@@ -1214,7 +1258,10 @@
                                                                                 data-amount="1000000"> <span
                                                                                     class="ng-binding">1.000.000</span>
                                                                             </li>
-
+                                                                            <li class="text-center"
+                                                                                data-amount="1500000"> <span
+                                                                                    class="ng-binding">1.500.000</span>
+                                                                            </li>
                                                                             <li class="text-center"
                                                                                 data-amount="5000000"> <span
                                                                                     class="ng-binding">5.000.000</span>
@@ -1240,7 +1287,7 @@
                                                                 <div style="text-align: center;margin-top: 1rem;">
                                                                     <button
                                                                         class="taoLenhNap toto-top-up__open-deposit-modal-button"
-                                                                        style="background: #0068b0;color: #fff;padding: 10px 20px;border-radius: 5px;">Tạo
+                                                                        style="background: #d4453d;color: #fff;padding: 10px 20px;border-radius: 5px; width: 100%;">Tạo
                                                                         lệnh nạp</button>
                                                                 </div>
                                                             </div>
@@ -1248,13 +1295,12 @@
                                                         <!-- SECOND STEP -->
                                                         <div class="secondStep" style="display: none;">
                                                             <div class="modal_secondStep">
-                                                                <div class="title">NẠP TỰ ĐỘNG GOBET</div>
                                                                 <div style=" padding: 0 15px;">
                                                                     <div class="qrCode" style="width: 100%">
                                                                         <img src="/images/qr-test.png" alt="">
                                                                     </div>
                                                                     <div class="logo">
-                                                                        <img style="margin-bottom: 2rem;"
+                                                                        <img
                                                                             src="/images/bankList/vietcombank.jpg"
                                                                             alt="">
                                                                     </div>

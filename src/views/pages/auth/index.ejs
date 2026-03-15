@@ -939,12 +939,6 @@
         }
     </style>
     <style>
-        [_nghost-serverApp-c147] {
-            display: block;
-            --tw-bg-opacity: 1;
-            background-color: rgb(29 30 31 / var(--tw-bg-opacity))
-        }
-
         .app[_ngcontent-serverApp-c147] {
             position: relative;
             height: 100px;
@@ -1347,9 +1341,8 @@
         }
 
         .bottom[_ngcontent-serverApp-c193] {
-            min-height: 30vh;
+            min-height: 100vh;
             margin: 0 17px;
-            --tw-border-opacity: 1;
         }
 
         .component[_ngcontent-serverApp-c193] {
@@ -1384,8 +1377,7 @@
         }
 
         .current[_ngcontent-serverApp-c193] span[_ngcontent-serverApp-c193] {
-            --tw-text-opacity: 1;
-            color: black
+            color: #fff
         }
 
         .switch-area[_ngcontent-serverApp-c193] {
@@ -1513,56 +1505,54 @@
         }
 
         fieldset[_ngcontent-serverApp-c130] {
-            text-transform: uppercase
+            text-transform: none
         }
 
         fieldset[_ngcontent-serverApp-c130]>div[_ngcontent-serverApp-c130] {
             position: relative;
-            margin-bottom: .75rem
+            margin-bottom: 12px
         }
 
         fieldset[_ngcontent-serverApp-c130]>div[_ngcontent-serverApp-c130] label[_ngcontent-serverApp-c130] {
-            display: flex;
-            align-items: center;
-            margin-left: .5rem;
-            margin-bottom: .25rem;
-            --tw-text-opacity: 1;
-            color: rgb(0 0 0 / var(--tw-text-opacity));
-            font-size: 13px
+            display: none
         }
 
         fieldset[_ngcontent-serverApp-c130]>div[_ngcontent-serverApp-c130] label[_ngcontent-serverApp-c130] i[_ngcontent-serverApp-c130] {
-            margin-right: .25rem;
-            --tw-text-opacity: 1;
-            color: rgb(255 77 0 / var(--tw-text-opacity))
+            display: none
         }
 
         fieldset[_ngcontent-serverApp-c130]>div[_ngcontent-serverApp-c130] input[_ngcontent-serverApp-c130],
         fieldset[_ngcontent-serverApp-c130]>div[_ngcontent-serverApp-c130] select[_ngcontent-serverApp-c130] {
             display: block;
             width: 100%;
-            height: 2rem;
-            padding: 0 .5rem;
-            --tw-text-opacity: 1;
-            color: #000;
-            font-size: .875rem;
-            line-height: 2rem;
-            --tw-bg-opacity: 1;
+            height: 48px;
+            padding: 0 20px;
+            padding-right: 45px;
+            color: #333;
+            font-size: 14px;
+            line-height: 48px;
             background-color: #fff;
-            border-radius: 10px;
-            border-width: 1px;
-            border-style: solid;
-            --tw-border-opacity: 1;
-            border-color: #000;
-            outline-style: none;
+            border-radius: 50px;
+            border: 1px solid #e0e0e0;
+            outline: none;
             text-transform: none
         }
 
         fieldset[_ngcontent-serverApp-c130]>div[_ngcontent-serverApp-c130] input[_ngcontent-serverApp-c130]::placeholder,
         fieldset[_ngcontent-serverApp-c130]>div[_ngcontent-serverApp-c130] select[_ngcontent-serverApp-c130]::placeholder {
-            --tw-text-opacity: 1;
-            color: #000;
-            text-transform: uppercase
+            color: #999;
+            text-transform: none
+        }
+
+        fieldset[_ngcontent-serverApp-c130]>div[_ngcontent-serverApp-c130] i.toggle-password-reg {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translateY(-50%);
+            z-index: 10;
+            cursor: pointer;
+            color: #999;
+            font-size: 18px;
         }
 
         fieldset[_ngcontent-serverApp-c130]>div[_ngcontent-serverApp-c130] input[type=radio][_ngcontent-serverApp-c130],
@@ -1597,15 +1587,13 @@
             margin: .75rem 0 1.25rem;
             padding: .25rem;
             text-align: center;
+            font-size: 14px;
             font-weight: 700;
-            font-size: 1rem;
             line-height: 1.75rem;
-            --tw-text-opacity: 1;
             color: #fff;
-            --tw-bg-opacity: 1;
-            background-color: #0068b0;
-            border-radius: .375rem;
-            text-transform: uppercase
+            background-color: #e23035;
+            border-radius: 43px;
+            text-transform: uppercase;
         }
 
         @media (max-width: 350px) {
@@ -1621,49 +1609,61 @@
 
         fieldset[_ngcontent-serverApp-c126] div[_ngcontent-serverApp-c126] {
             position: relative;
-            margin-bottom: .75rem;
-            overflow: hidden
+            margin-bottom: 12px;
+            overflow: visible
         }
 
         fieldset[_ngcontent-serverApp-c126] div[_ngcontent-serverApp-c126] i[_ngcontent-serverApp-c126] {
             position: absolute;
             z-index: 10;
-            top: .5rem;
-            left: 1rem;
-            --tw-text-opacity: 1;
-            color: #000;
-            font-size: 1rem;
-            line-height: 1.5rem
+            top: 50%;
+            transform: translateY(-50%);
+            left: 16px;
+            color: #e23035;
+            font-size: 18px;
+            line-height: 1
         }
 
         fieldset[_ngcontent-serverApp-c126] div[_ngcontent-serverApp-c126] i.refresh[_ngcontent-serverApp-c126] {
             left: auto;
-            right: .75rem
+            right: 16px
+        }
+
+        fieldset[_ngcontent-serverApp-c126] div[_ngcontent-serverApp-c126] i.toggle-password {
+            left: auto;
+            right: 16px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .login-notice {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 10px 0 15px;
+            text-transform: none;
         }
 
         fieldset[_ngcontent-serverApp-c126] div[_ngcontent-serverApp-c126] input[_ngcontent-serverApp-c126] {
             display: block;
             width: 100%;
-            padding-left: 38px;
-            --tw-text-opacity: 1;
-            color: #000;
-            font-size: .875rem;
-            line-height: 2.5rem;
-            --tw-bg-opacity: 1;
+            height: 48px;
+            padding-left: 45px;
+            padding-right: 45px;
+            color: #333;
+            font-size: 14px;
+            line-height: 48px;
             background-color: #fff;
-            border-radius: 10px;
-            border-width: 1px;
-            border-style: solid;
-            --tw-border-opacity: 1;
-            border-color: #000;
-            outline-style: none;
+            border-radius: 50px;
+            border: 1px solid #e0e0e0;
+            outline: none;
             text-transform: none
         }
 
         fieldset[_ngcontent-serverApp-c126] div[_ngcontent-serverApp-c126] input[_ngcontent-serverApp-c126]::placeholder {
-            --tw-text-opacity: 1;
-            color: #000;
-            text-transform: uppercase
+            color: #999;
+            text-transform: none
         }
 
         .submit-btn[_ngcontent-serverApp-c126] {
@@ -1673,15 +1673,13 @@
             margin: .75rem 0 1.25rem;
             padding: .25rem;
             text-align: center;
-            font-size: 1rem;
+            font-size: 14px;
             font-weight: 700;
             line-height: 1.75rem;
-            --tw-text-opacity: 1;
             color: #fff;
-            --tw-bg-opacity: 1;
-            background-color: #0068b0;
-            border-radius: .375rem;
-            text-transform: uppercase
+            background-color: #e23035;
+            border-radius: 43px;
+            text-transform: uppercase;
         }
     </style>
     <style>
@@ -1886,38 +1884,64 @@
             white-space: nowrap
         }
     </style>
+    <style>
+        .list[_ngcontent-serverapp-c193] {
+            height: 35px;
+            line-height: 35px;
+            color: red;
+            font-weight: 700;
+            background-color: rgb(255 255 255 / 1);
+            text-transform: uppercase;
+            border: 1px solid #f00;
+            border-radius: 50px;
+            margin-top: 1rem;
+        }
+
+        .list[_ngcontent-serverapp-c193] li[_ngcontent-serverapp-c193] {
+            flex: 1;
+        }
+
+        .list[_ngcontent-serverapp-c193] li[_ngcontent-serverapp-c193] a.current[_ngcontent-serverapp-c193] {
+            color: #fff;
+            background: #f00;
+            border-radius: 50px;
+        }
+
+        .list[_ngcontent-serverapp-c193] li[_ngcontent-serverapp-c193] a[_ngcontent-serverapp-c193] {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body class="mat-typography vi-VN">
     <app-root _nghost-sc178="" ng-version="14.2.12" ng-server-context="other" _nghost-serverapp-c157="">
         <app-switch _nghost-serverapp-c193="">
             <div _ngcontent-serverapp-c193="" class="bg-customized-bg-quinary block h-full overflow-y-auto uppercase">
-                <div _ngcontent-serverapp-c193="" class="bottom-sheet-title">
+                <div _ngcontent-serverapp-c193="">
                     <button onclick="window.location='/'" _ngcontent-serverapp-c193="" type="button" routerlink="/"
                         class="bottom-sheet-close" tabindex="0">
                         <i _ngcontent-serverapp-c193="" class="fas fa-times-circle"></i>
                     </button>
                 </div>
 
-                <section _ngcontent-serverapp-c193="" style="margin: 2rem 0rem;" class="top relative">
-                    <a _ngcontent-serverapp-c193="" class="logo" href="/">
-                        <img style="width: 77%; height: auto;" _ngcontent-serverapp-c193="" src="/images/logo.png">
+                <section _ngcontent-serverapp-c193="" style="margin: 1rem 0px 10px 0px; margin-inline: 10px;"
+                    class="relative">
+                    <a _ngcontent-serverapp-c193="" class="logo" href="/" style="margin: 25px auto 15px;">
+                        <img style="max-width: 260px;max-height: 88px;margin: 0 auto;" _ngcontent-serverapp-c193=""
+                            src="/images/main/logo2.png">
                     </a>
 
-                    <ul _ngcontent-serverapp-c193="" style="margin-top: 2rem;" class="flex justify-around text-xl text-white/50 auth-method">
-                        <li _ngcontent-serverapp-c193="" class="relative" style="border: 2px solid black;
-                        border-radius: 10px;
-                        padding: 5px 11px;
-                        line-height: 30px;">
+                    <ul _ngcontent-serverapp-c193="" class="flex justify-around text-sm list auth-method">
+                        <li _ngcontent-serverapp-c193="" class="relative">
                             <a _ngcontent-serverapp-c193="" routerlinkactive="current" href="javascript:void(0)"
                                 class="current" data-method-type="login">
                                 <span _ngcontent-serverapp-c193="" translate="Login_LoginTitle">Đăng nhập</span>
                             </a>
                         </li>
-                        <li _ngcontent-serverapp-c193="" class="relative" style="border: 2px solid black;
-                        border-radius: 10px;
-                        padding: 5px 11px;
-                        line-height: 30px;">
+                        <li _ngcontent-serverapp-c193="" class="relative">
                             <a _ngcontent-serverapp-c193="" routerlinkactive="current" href="javascript:void(0)"
                                 data-method-type="register">
                                 <span _ngcontent-serverapp-c193="" translate="Register_Register">Đăng ký</span>
@@ -1927,23 +1951,29 @@
                 </section>
 
 
-                <section _ngcontent-serverapp-c193="" style="margin-bottom: 8rem;" class="bottom">
-                    <div _ngcontent-serverapp-c193="">
+                <section _ngcontent-serverapp-c193="" class="bottom">
+                    <div _ngcontent-serverapp-c193="" style="margin-top: 1rem;">
 
                         <app-login _ngcontent-serverapp-c193="" class="component" _nghost-serverapp-c126="">
                             <form _ngcontent-serverapp-c126="" novalidate="" onsubmit="event.preventDefault();"
-                                id="loginForm" class="wrapper w-full px-5 py-6 ng-invalid ng-dirty ng-touched">
+                                id="loginForm" class="wrapper w-full ng-invalid ng-dirty ng-touched">
                                 <fieldset _ngcontent-serverapp-c126="">
                                     <div _ngcontent-serverapp-c126="">
                                         <i _ngcontent-serverapp-c126="" class="far fa-user"></i>
                                         <input _ngcontent-serverapp-c126="" type="text" formcontrolname="account"
-                                            placeholder="Tài khoản" class="ng-dirty ng-valid ng-touched" id="username">
+                                            placeholder="Tên đăng nhập" class="ng-dirty ng-valid ng-touched"
+                                            id="username">
                                     </div>
                                     <div _ngcontent-serverapp-c126="">
                                         <i _ngcontent-serverapp-c126="" class="far fa-lock-alt"></i>
                                         <input _ngcontent-serverapp-c126="" type="password" formcontrolname="password"
-                                            placeholder="Mật khẩu" class="ng-dirty ng-valid ng-touched" id="password">
+                                            placeholder="Mật khẩu thành viên" class="ng-dirty ng-valid ng-touched"
+                                            id="password">
+                                        <i _ngcontent-serverapp-c126="" class="far fa-eye-slash toggle-password"
+                                            onclick="togglePasswordVisibility(this)"></i>
                                     </div>
+                                    <p class="login-notice">Vui lòng tự bảo quản thông tin tài khoản<br>Để bảo đảm an
+                                        toàn cho tài khoản của bạn</p>
                                     <button _ngcontent-serverapp-c126="" type="submit"
                                         class="text-customized-bg.duodenary bg-customized-bg-undenary submit-btn mt-2 h-10 w-full rounded-[5px] text-xl disabled:opacity-75 btn-submit-login"><span
                                             _ngcontent-serverapp-c126="">Đăng
@@ -1956,81 +1986,37 @@
 
                         <app-register _ngcontent-serverapp-c172="" class="component" _nghost-serverapp-c130="">
                             <form _ngcontent-serverapp-c130="" novalidate=""
-                                class="w-full py-6 px-4 ng-invalid ng-dirty ng-touched"
-                                onsubmit="event.preventDefault();" id="registerForm">
+                                class="w-full ng-invalid ng-dirty ng-touched" onsubmit="event.preventDefault();"
+                                id="registerForm">
                                 <fieldset _ngcontent-serverapp-c130="">
                                     <div _ngcontent-serverapp-c130="">
-                                        <label _ngcontent-serverapp-c130="">
-                                            
-                                            <i _ngcontent-serverapp-c130="" class="icon account"></i>
-                                            <span _ngcontent-serverapp-c130="" translate="Register_Member_Account">Tài
-                                                khoản</span>
-                                        </label>
                                         <input _ngcontent-serverapp-c130="" type="text" maxlength="50"
                                             formcontrolname="account" class="ng-dirty ng-touched ng-invalid"
-                                            id="username">
-                                       
+                                            id="username" placeholder="Tên đăng nhập">
                                     </div>
                                     <div _ngcontent-serverapp-c130="">
-                                        <label _ngcontent-serverapp-c130="">
-                                            
-                                            <i _ngcontent-serverapp-c130="" class="icon password"></i>
-                                            <span _ngcontent-serverapp-c130="" translate="Register_Member_Password">Mật
-                                                khẩu </span>
-                                        </label>
                                         <input _ngcontent-serverapp-c130="" type="password" formcontrolname="password"
-                                            class="ng-dirty ng-touched ng-invalid" id="password">
-                                        
+                                            class="ng-dirty ng-touched ng-invalid" id="password" placeholder="Mật khẩu">
                                     </div>
                                     <div _ngcontent-serverapp-c130="">
-                                        <label _ngcontent-serverapp-c130="">
-                                            
-                                            <i _ngcontent-serverapp-c130="" class="icon confirmPassword"></i>
-                                            <span _ngcontent-serverapp-c130="" translate="Register_Confirm_Password">Xác
-                                                nhận mật khẩu </span>
-                                        </label>
                                         <input _ngcontent-serverapp-c130="" type="password"
                                             formcontrolname="confirmPassword"
-                                            class="ng-untouched ng-pristine ng-invalid" id="password_cf">
-                                      
+                                            class="ng-untouched ng-pristine ng-invalid" id="password_cf"
+                                            placeholder="Xác nhận mật khẩu">
                                     </div>
-                                </fieldset>
-
-
-                                <fieldset _ngcontent-serverapp-c130="">
-                                    <div _ngcontent-serverapp-c130="" class="name">
-                                        <label _ngcontent-serverapp-c130="">
-                                            
-                                            <i _ngcontent-serverapp-c130="" class="icon name"></i>
-                                            <span _ngcontent-serverapp-c130="" translate="Register_Real_Name">Họ & Tên (không dấu)</span>
-                                        </label>
+                                    <div _ngcontent-serverapp-c130="">
                                         <input _ngcontent-serverapp-c130="" type="text" formcontrolname="name"
-                                            class="ng-untouched ng-pristine ng-valid" id="name">
+                                            class="ng-untouched ng-pristine ng-valid" id="name" placeholder="Họ & tên">
                                     </div>
-                                </fieldset>
-
-                                <fieldset _ngcontent-serverapp-c130="">
-                                    <div _ngcontent-serverapp-c130="" class="name">
-                                        <label _ngcontent-serverapp-c130="">
-                                            
-                                            <i _ngcontent-serverapp-c130="" class="icon name"></i>
-                                            <span _ngcontent-serverapp-c130="" translate="Register_Real_Name">Số điện thoại</span>
-                                        </label>
+                                    <div _ngcontent-serverapp-c130="">
                                         <input _ngcontent-serverapp-c130="" type="text" formcontrolname="phone"
-                                            class="ng-untouched ng-pristine ng-valid" id="phone" value="+84">
-                                        
+                                            class="ng-untouched ng-pristine ng-valid" id="phone"
+                                            placeholder="Nhập số điện thoại">
                                     </div>
-                                </fieldset>
-
-                                <fieldset _ngcontent-serverapp-c130="">
-                                    <div _ngcontent-serverapp-c130="" class="name">
-                                        <label _ngcontent-serverapp-c130="">
-                                            
-                                            <i _ngcontent-serverapp-c130="" class="icon name"></i>
-                                            <span _ngcontent-serverapp-c130="" translate="Register_Real_Name">Mã đại lý (Nếu có)</span>
-                                        </label>
-                                        <input _ngcontent-serverapp-c130="" type="text" formcontrolname="name"
-                                            class="ng-untouched ng-pristine ng-valid" id="refcode">
+                                    <div _ngcontent-serverapp-c130="">
+                                        <input _ngcontent-serverapp-c130="" type="text" formcontrolname="refcode"
+                                            class="ng-untouched ng-pristine ng-valid" id="refcode"
+                                            placeholder="Mã đại lý (nếu có)">
                                     </div>
                                 </fieldset>
 
@@ -2039,19 +2025,23 @@
                                 </fieldset>
 
                                 <fieldset _ngcontent-serverapp-c130="">
-                                    <button _ngcontent-serverapp-c130="" type="submit"
+                                    <p style="text-align: center;color: red;font-weight: 500; margin: 0 !important;">
+                                        Thỏa thuận đăng ký người dùng</p>
+                                </fieldset>
+
+                                <fieldset _ngcontent-serverapp-c130="">
+                                    <button _ngcontent-serverapp-c130="" type=" submit"
                                         class="submit-btn btn-submit-register">
-                                        <span _ngcontent-serverapp-c130="">Đăng ký</span>
+                                        <span _ngcontent-serverapp-c130="">Đăng ký ngay</span>
                                     </button>
                                 </fieldset>
                             </form>
                         </app-register>
 
+                        <img _ngcontent-serverapp-c206="" class="w-full mb-4"
+                            src="/images/main/img.png">
                     </div>
                 </section>
-                <app-footer-icon _ngcontent-serverapp-c193="" _nghost-serverapp-c147="">
-                  <img src="/images/background_footer.png" alt="">
-                </app-footer-icon>
             </div>
         </app-switch>
     </app-root>
@@ -2063,5 +2053,19 @@
 </body>
 
 <script type="text/javascript" src="/core/js/auth/index.js"></script>
+<script>
+    function togglePasswordVisibility(icon) {
+        var input = icon.previousElementSibling;
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        }
+    }
+</script>
 
 </html>

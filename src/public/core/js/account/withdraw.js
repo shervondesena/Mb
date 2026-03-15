@@ -117,7 +117,6 @@ function reloadBalance() {
         }).done((response) => {
             if (response.status) {
                 const userData = response.user;
-                $("#bankNameUserAdd").val(userData.name.toUpperCase());
                 $("#user-header-balance").html(numberWithCommas(userData.coin))
                 $("#amountWithdraw").val(numberWithCommas(userData.coin));
             } else {

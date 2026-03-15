@@ -18,6 +18,157 @@
         box-shadow: 0 2px 2px #2020204d;
     }
 </style>
+<!-- Modal Chuyen Quy -->
+<style>
+    .game-transfer-wallet-modal-v2 {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .6);
+        font-size: 14px;
+        color: rgba(255, 255, 255, .8);
+    }
+
+    .game-transfer-wallet-modal-v2__main {
+        animation-name: modal-appear;
+        animation-duration: .3s;
+        animation-timing-function: ease-in-out;
+        overflow: hidden;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, .2);
+        width: 450px;
+        max-width: 450px;
+        background: rgba(255, 255, 255, .1);
+        box-shadow: 4px 4px 20px 10px rgba(0, 0, 0, .6);
+        backdrop-filter: blur(10px);
+    }
+
+    .game-transfer-wallet-modal-v2__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        padding: 0 10px 0 10px;
+        background-color: #d4453d;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .game-transfer-wallet-modal-v2__content {
+        padding: 10px 10px 20px 10px;
+        background: #fff;
+        font-size: 14px;
+    }
+
+    .game-transfer-wallet-modal-v2__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+        color: #000;
+    }
+
+    .game-transfer-wallet-modal-v2__item>span {
+        display: inline-block;
+    }
+
+    .game-transfer-wallet-modal-v2__item>div {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 75%;
+    }
+
+    .game-transfer-wallet-modal-v2__item>div button {
+        cursor: pointer;
+    }
+
+    .game-transfer-wallet-modal-v2__item-amount {
+        display: block;
+        border: 1px solid #e9e7e7;
+        border-radius: 4px;
+        width: 73%;
+        padding: 5px 6px;
+        color: #f18016;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .game-transfer-wallet-modal-v2__item button {
+        border-radius: 4px;
+        border: 1px solid #a09e9e;
+        margin-left: 6px;
+        width: 70px;
+        padding: 5px 0;
+        background-color: #f4f4f4;
+        color: #000;
+    }
+
+    .game-transfer-wallet-modal-v2__item input {
+        border-radius: 4px;
+        border: 1px solid #a09e9e;
+        width: 73%;
+        padding: 5px;
+        background-color: #fff;
+        text-align: right;
+    }
+
+    .game-transfer-wallet-modal-v2__footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        border-top: 1px solid #d7d6d6;
+        padding: 10px;
+        background: #fff;
+    }
+
+    .game-transfer-wallet-modal-v2__footer button:first-child {
+        border-radius: 20px;
+        border: 1px solid #a09e9e;
+        margin-left: 4px;
+        width: 35%;
+        padding: 7px 0;
+        background-color: #e74c4c;
+        color: #fff;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .game-transfer-wallet-modal-v2__footer button:nth-child(2) {
+        border: none;
+        border-radius: 20px;
+        margin-left: 4px;
+        width: 60%;
+        padding: 7px 0;
+        background-color: #e74c4c;
+        color: #fff;
+    }
+
+    .game-transfer-wallet-modal-v2__footer button {
+        height: 36px;
+    }
+
+    .game-transfer-wallet-modal-v2__title button {
+        border: none;
+        width: 50px;
+        height: 42px;
+        background: #080808;
+        color: #faff00;
+        margin-right: -1rem;
+        cursor: pointer;
+        border-radius: 9px;
+    }
+</style>
 <!-- Header Page Layout -->
 <%- include('./includes/header') %>
     <!-- END Header Page Layout -->
@@ -108,63 +259,62 @@
                                                         </span>
                                                     </li>
                                                 </ul>
-                                                <div _ngcontent-serverapp-c162="" class="min-h-[38vh] w-[100%]"
+                                                <div _ngcontent-serverapp-c162="" class="min-h-[38vh] w-[100%]" id="gameListAllDetail"
                                                     style="margin-top: 10px;">
                                                     <!-- Casino -->
                                                     <div _ngcontent-serverapp-c162="" class="Live block text-left"
                                                         style="display: flex; flex-wrap: wrap;" id="list-product-live">
                                                         <ul _ngcontent-serverapp-c188="" class="game-part Live">
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-
-                                                                <img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="SEX" game-type="LC"
                                                                     src="/images/casino/744b6b41ca02421c95af55c126ab4c7a.png">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="DG" game-type="LC"
                                                                     src="/images/casino/7dfcc69988934340bcc1bfc9390b0aba.png">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="WM" game-type="LC"
                                                                     src="/images/casino/64460447123f4ddda2da3b543712c7e0.png">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="EG" game-type="LC"
                                                                     src="/images/casino/fd82f39b0e8f4cb0b16f01901264868b.png">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
-                                                                    src="/images/casino/c0949ff1cf9f4ddea34cb8fbf263dc1f.png">
-                                                            </li>
-                                                            <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
-                                                                    src="/images/casino/c142f68edd654ce3b95708b78759b22a.png">
-                                                            </li>
-                                                            <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
-                                                                    src="/images/casino/f1873b12933a4d2893a7594b24124ba5.png">
-                                                            </li>
-                                                            <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
-                                                                    src="/images/casino/09e80cd2fae445e08567f52336a6ff95.png">
-                                                            </li>
-                                                            <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
-                                                                    src="/images/casino/b2f2f428b2164ea7a5c8133cf98c9ff6.png">
-                                                            </li>
-                                                            <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
-                                                                    src="/images/casino/88c2ff7ebc4e43cba97fd9c62913c2ed.png">
-                                                            </li>
-                                                            <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="BG" game-type="LC"
                                                                     src="/images/casino/792e4050032e40d889a2b87d7d4bfa25.png">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
+                                                                    src="/images/casino/c0949ff1cf9f4ddea34cb8fbf263dc1f.png">
+                                                            </li>
+                                                            <li _ngcontent-serverapp-c188="" class="game-item">
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
+                                                                    src="/images/casino/c142f68edd654ce3b95708b78759b22a.png">
+                                                            </li>
+                                                            <li _ngcontent-serverapp-c188="" class="game-item">
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
+                                                                    src="/images/casino/f1873b12933a4d2893a7594b24124ba5.png">
+                                                            </li>
+                                                            <li _ngcontent-serverapp-c188="" class="game-item">
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
+                                                                    src="/images/casino/09e80cd2fae445e08567f52336a6ff95.png">
+                                                            </li>
+                                                            <li _ngcontent-serverapp-c188="" class="game-item">
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
+                                                                    src="/images/casino/b2f2f428b2164ea7a5c8133cf98c9ff6.png">
+                                                            </li>
+                                                            <li _ngcontent-serverapp-c188="" class="game-item">
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
+                                                                    src="/images/casino/88c2ff7ebc4e43cba97fd9c62913c2ed.png">
+                                                            </li>
+                                                            <li _ngcontent-serverapp-c188="" class="game-item">
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
                                                                     src="/images/casino/31241b28a1114612809a547a39df483f.png">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
                                                                     src="/images/casino/6000004a42664551aee4e0a08ff50511.png">
                                                             </li>
                                                         </ul>
@@ -174,55 +324,47 @@
                                                         id="list-product-sport" style="display: none;width: 100%;">
                                                         <ul _ngcontent-serverapp-c188="" class="game-part Sport">
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
-                                                                    src="/images/sport/782c673ca14a48629fa5e7cdc55c9d79.png">
-                                                            </li>
-                                                            <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
-                                                                    src="/images/sport/f3b6b245686b43b39edc091d201b91bf.png">
-                                                            </li>
-                                                            <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
-                                                                    src="/images/sport/2286a29067be46f4b8dfd21b37cdb0cd.png">
-                                                            </li>
-                                                            <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
-                                                                    src="/images/sport/7bbbffefb5284af9b53cac9be857ece0.png">
-                                                            </li>
-                                                            <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="SBO" game-type="SB"
                                                                     src="/images/sport/b696289290d9419bbf098476f5864d68.png">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
+                                                                    src="/images/sport/782c673ca14a48629fa5e7cdc55c9d79.png">
+                                                            </li>
+                                                            <li _ngcontent-serverapp-c188="" class="game-item">
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
+                                                                    src="/images/sport/f3b6b245686b43b39edc091d201b91bf.png">
+                                                            </li>
+                                                            <li _ngcontent-serverapp-c188="" class="game-item">
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
+                                                                    src="/images/sport/2286a29067be46f4b8dfd21b37cdb0cd.png">
+                                                            </li>
+                                                            <li _ngcontent-serverapp-c188="" class="game-item">
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
+                                                                    src="/images/sport/7bbbffefb5284af9b53cac9be857ece0.png">
+                                                            </li>
+                                                            <li _ngcontent-serverapp-c188="" class="game-item">
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
                                                                     src="/images/sport/353d93e048364eb7841e291ed1b252b5.png">
                                                             </li>
                                                         </ul>
                                                     </div>
                                                     <!-- Đá gà -->
-                                                    <div _ngcontent-serverapp-c162="" class="Cockfighting block text-left"
+                                                    <div _ngcontent-serverapp-c162=""
+                                                        class="Cockfighting block text-left"
                                                         id="list-product-cockfighting" style="display: none;">
                                                         <ul _ngcontent-serverapp-c188="" class="game-part Cockfighting">
 
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
                                                                     src="/images/fightcook/5758d672a8284fe989a304d9c95d265d.jpg">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
                                                                     src="/images/fightcook/2be3632395e04df7ae48e37a9a3534cd.jpg">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
                                                                     src="/images/fightcook/5a2bede128074d228f26ca9e815f5257.jpg">
                                                             </li>
                                                         </ul>
@@ -232,28 +374,23 @@
                                                         id="list-product-lottery" style="display: none;">
                                                         <ul _ngcontent-serverapp-c188="" class="game-part Lottery">
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
                                                                     src="/images/lottery/8fd29664faad47ae8fc75c115c36d80b.jpg">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
                                                                     src="/images/lottery/9edbe0f5d88c401b86def3b0aa12bdb8.jpg">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
                                                                     src="/images/lottery/0ffb757308ee42c28e89965fd6d6350f.jpg">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
                                                                     src="/images/lottery/81f076fa698a47bfa3eb7442664d1c73.jpg">
                                                             </li>
                                                             <li _ngcontent-serverapp-c188="" class="game-item">
-                                                                <div _ngcontent-serverapp-c188="" class="event-group">
-                                                                </div><img _ngcontent-serverapp-c188=""
+                                                                <img _ngcontent-serverapp-c188="" game-product="TEST" game-type="TEST"
                                                                     src="/images/lottery/43852280c4a64422884557cd57686427.png">
                                                             </li>
                                                         </ul>
@@ -262,9 +399,6 @@
                                             </div>
 
                                         </app-game-category>
-
-
-
 
                                         <!-- Footer Layout -->
                                         <%- include('./includes/footer_layout') %>
@@ -287,6 +421,9 @@
 
             </app-sample-layout>
         </app-root>
+
+        <!-- Modal chuyen quy -->
+        <div id="game-transfer-wallet-modal-container"></div>
 
         <!-- Notify Modal -->
         <%- include('./includes/notify_modal') %>

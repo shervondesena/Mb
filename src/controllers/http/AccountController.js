@@ -130,18 +130,46 @@ module.exports = {
   },
   deposit: async (req, res) => {
     try {
-      const dataPage = {
-        title: "Khu Vực Nạp Tiền",
-        config,
-        session: req.session,
-        helpers,
-        location: "deposit",
-      };
-      res.render("pages/account/deposit", {
-        dataPage,
+      // Gọi API transactionHistoryCondition
+      const response = await axios.get(`${config.MAIN_API}/api/payment/transactionHistoryCondition`, {
+        headers: {
+          Authorization: `Bearer ${req.session.accessToken}`,
+        },
       });
+      const responseDataBank = await axios.get(`${config.MAIN_API}/api/payment/getListManualBank`, {
+        headers: {
+          Authorization: `Bearer ${req.session.accessToken}`,
+        },
+      });
+
+      // Kiểm tra trạng thái từ phản hồi của API
+      if (response.data.status && responseDataBank.data.status) {
+        const dataPage = {
+          title: "Khu vực nạp tiền",
+          config,
+          session: req.session,
+          helpers,
+          location: "deposit",
+          listBank: responseDataBank.data.data || []
+        };
+        return res.render("pages/account/deposit", {
+          dataPage,
+        });
+      } else {
+        const dataPage = {
+          title: "Khu vực nạp tiền",
+          config,
+          session: req.session,
+          helpers,
+          location: "deposit",
+          msg: response.data.msg
+        };
+        return res.render("pages/account/deposit_condition", {
+          dataPage,
+        });
+      }
     } catch (e) {
-      res.status(200).json({
+      res.status(500).json({
         status: false,
         msg: e.message,
       });

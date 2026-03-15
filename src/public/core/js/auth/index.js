@@ -6,8 +6,19 @@ $(document).ready(() => {
         $(this).addClass("current");
         changeTabMethod($(this).attr("data-method-type"));
     });
-    $("app-login").show();
-    $("app-register").hide();
+
+    // Check URL param for register
+    var urlParams = new URLSearchParams(window.location.search);
+    var authType = urlParams.get('type');
+    if (authType === 'register') {
+        $("app-login").hide();
+        $("app-register").show();
+        $(".auth-method li a").removeClass("current");
+        $(".auth-method li a[data-method-type='register']").addClass("current");
+    } else {
+        $("app-login").show();
+        $("app-register").hide();
+    }
 
     // add phone and email to form register
     $('#registerForm input#email').val(`guest000${RandomUserName(8).toLowerCase()}@gmail.com`);
@@ -34,8 +45,11 @@ function changeTabMethod(type) {
     }
 }
 
+let isLoginSubmitting = false;
 function loginPOST(element) {
     try {
+        if (isLoginSubmitting) return;
+
         const username = $('#loginForm input#username').val();
         const password = $('#loginForm input#password').val();
 
@@ -43,6 +57,7 @@ function loginPOST(element) {
             initAuthNotifyModal(true, "Vui lòng đầy đủ thông tin");
             return;
         }
+        isLoginSubmitting = true;
         element.prop("disabled", true);
         $.ajax({
             "url": "/auth/login",
@@ -56,6 +71,7 @@ function loginPOST(element) {
                 "password": password
             }),
         }).done(function (response) {
+            isLoginSubmitting = false;
             element.prop("disabled", false);
             if (response.status) {
                 setTimeout(() => {
@@ -64,15 +80,27 @@ function loginPOST(element) {
             } else {
                 initAuthNotifyModal(true, response.msg);
             }
+        }).fail(function () {
+            isLoginSubmitting = false;
+            element.prop("disabled", false);
+            initAuthNotifyModal(true, "Yêu cầu thất bại. Vui lòng thử lại.");
         });
     } catch (e) {
         console.log(e);
+        isLoginSubmitting = false;
         initAuthNotifyModal(true, "Có lỗi xảy ra, vui lòng thử lại!");
     }
 }
 
+let isRegisterSubmitting = false;
 function registerPOST(element) {
     try {
+        if (isRegisterSubmitting) return;
+
+        // Convert username to lowercase
+        var usernameInput = $('#registerForm input#username');
+        usernameInput.val(usernameInput.val().toLowerCase());
+
         if (!$('#registerForm input#username').val() ||
             !$('#registerForm input#password').val() ||
             !$('#registerForm input#password_cf').val() ||
@@ -83,13 +111,13 @@ function registerPOST(element) {
             return;
         }
 
-        const testUsername = new RegExp('^[a-zA-Z0-9]+$');
+        const testUsername = new RegExp('^[a-z0-9]+$');
         const testName = new RegExp("^[a-zA-Z \s\.\!\?\"\-]+$");
         const testEmail = new RegExp("[a-z0-9]+@[a-z]+\.[a-z]{2,3}");
 
         // validate input type  
         if (!testUsername.test($('#registerForm input#username').val())) {
-            initAuthNotifyModal(true, "Tên tài khoản không hợp lệ!");
+            initAuthNotifyModal(true, "Tên tài khoản chỉ được sử dụng chữ thường và số!");
             return;
         }
         if (!testName.test($('#registerForm input#name').val())) {
@@ -102,12 +130,12 @@ function registerPOST(element) {
         }
 
         // validate string length
-        if ($('#registerForm input#username').val().length < 5 || $('#registerForm input#username').val().length > 20) {
-            initAuthNotifyModal(true, "Tên tài khoản không được nhỏ hơn 5 và lớn hơn 20 ký tự!");
+        if ($('#registerForm input#username').val().length < 6 || $('#registerForm input#username').val().length > 12) {
+            initAuthNotifyModal(true, "Tên tài khoản phải từ 6 đến 12 ký tự!");
             return;
         }
         if ($('#registerForm input#name').val().length <= 5 || $('#registerForm input#name').val().length > 50) {
-            initAuthNotifyModal(true, "Họ và tên không được nhỏ hơn 5 và lớn hơn 50 ký tự!");
+            initAuthNotifyModal(true, "Họ và tên phải từ 5 đến 50 ký tự!");
             return;
         }
         if ($('#registerForm input#email').val().length < 5 || $('#registerForm input#email').val().length > 50) {
@@ -118,8 +146,8 @@ function registerPOST(element) {
             initAuthNotifyModal(true, "Số điện thoại không hợp lệ!");
             return;
         }
-        if ($('#registerForm input#password').val().length < 5 || $('#registerForm input#password').val().length > 30) {
-            initAuthNotifyModal(true, "Mật khẩu không được nhỏ hơn 8 và lớn hơn 20 ký tự");
+        if ($('#registerForm input#password').val().length < 6 || $('#registerForm input#password').val().length > 20) {
+            initAuthNotifyModal(true, "Mật khẩu phải từ 6 đến 20 ký tự");
             return;
         }
         if ($('#registerForm input#password').val() !== $('#registerForm input#password_cf').val()) {
@@ -127,6 +155,7 @@ function registerPOST(element) {
             return;
         }
 
+        isRegisterSubmitting = true;
         element.prop("disabled", true);
         $.ajax({
             "url": "/auth/register",
@@ -144,6 +173,7 @@ function registerPOST(element) {
                 "password": $('#registerForm input#password').val()
             }),
         }).done(function (response) {
+            isRegisterSubmitting = false;
             element.prop("disabled", false);
             if (response.status) {
                 setTimeout(() => {
@@ -152,10 +182,15 @@ function registerPOST(element) {
             } else {
                 initAuthNotifyModal(true, response.msg);
             }
+        }).fail(function () {
+            isRegisterSubmitting = false;
+            element.prop("disabled", false);
+            initAuthNotifyModal(true, "Yêu cầu thất bại. Vui lòng thử lại.");
         });
 
     } catch (e) {
         console.log(e);
+        isRegisterSubmitting = false;
         initAuthNotifyModal(true, "Có lỗi xảy ra, vui lòng thử lại!");
     }
 }
